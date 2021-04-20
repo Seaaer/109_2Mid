@@ -10,5 +10,40 @@ namespace _109_2Mid {
         protected void Page_Load(object sender, EventArgs e) {
 
         }
+
+        protected void ddl_Area_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ddl_Place.Items.Clear();
+            if (ddl_Area.SelectedValue == "北區")
+            {
+                ddl_Place.Items.Add(new ListItem("基隆", "基隆"));
+                ddl_Place.Items.Add(new ListItem("台北", "台北"));
+                ddl_Place.Items.Add(new ListItem("新北", "新北"));
+            }
+            else if (ddl_Area.SelectedValue == "中區")
+            {
+                ddl_Place.Items.Add(new ListItem("苗栗", "苗栗"));
+                ddl_Place.Items.Add(new ListItem("台中", "台中"));
+                ddl_Place.Items.Add(new ListItem("南投", "南投"));
+            }
+        }
+
+        protected void rbl_Res_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (rbl_Res.Items[0].Selected == true)
+            {
+                tb_Des.Visible = false;
+            }
+            else if(rbl_Res.Items[1].Selected == true)
+            {
+                tb_Des.Visible = true;
+            }
+        }
+
+        protected void btn_Sub_Click(object sender, EventArgs e)
+        {
+            lb_Msg.Text = ddl_Area.Text + "<br />" + ddl_Place.Text + "<br />" + tb_Name.Text + "<br />" + tb_Des.Text + "<br />";
+            tb_Des.Text = "";
+        }
     }
 }
